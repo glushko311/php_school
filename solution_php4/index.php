@@ -8,8 +8,8 @@
 function get_data(){
     if (isset($_POST['first_num']) && isset($_POST['second_num']) && isset($_POST['action_field'])) {
 
-    $first = (int)$_POST['first_num'];
-    $second = (int)$_POST['second_num'];
+    $first = (float)$_POST['first_num'];
+    $second = (float)$_POST['second_num'];
     $action = $_POST['action_field'];
     $result = [ 'res' => 0, 'error' => '' ];
 
@@ -27,7 +27,8 @@ function get_data(){
     }
 }
 function draw_error($result){
-    echo $result['error'];
+    $_POST['error'] = $result['error'];
+
 }
 function draw_result($result){
     $_POST['result'] = $result['res'];
@@ -152,6 +153,7 @@ get_data();
                 <div class="action_item mult"><p>*</p></div>
                 <div class="action_item del"><p>/</p></div>
             </div>
+            <p class="error_message"><?php if(isset($_POST['error'])){echo $_POST['error'];}; ?></p>
      	<script type="text/javascript" src = "./jquery-3.1.0.min.js"></script>
       	<script type="text/javascript" src='./script1.js'></script>
         </body>
