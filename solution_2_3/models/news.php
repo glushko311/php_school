@@ -6,16 +6,20 @@
  * Date: 09.06.2017
  * Time: 13:50
  */
-require_once __DIR__ . '/../classes/sql.php';
 
-class News
+class News extends AbstractModel
 {
     public $id;
     public $title;
     public $text;
 
-    public static function getAll(){
+    protected static $table = 't_news';
+    protected static  $className = 'News';
+
+
+    public static function getOne($id){
         $db = new Sql();
-        return $db->sendQuery('SELECT * FROM t_news', 'News');
+        $query = 'SELECT * FROM t_news WHERE t_news.id=' . $id;
+        return $db->queryOne($query, 'News');
     }
 }

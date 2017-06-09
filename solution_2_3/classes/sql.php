@@ -6,7 +6,6 @@
  * Date: 04.06.2017
  * Time: 22:06
  */
-require_once __DIR__ . '/../models/news.php';
 
 class Sql
 {
@@ -23,7 +22,7 @@ class Sql
         $this->connect = $connect;
     }
 
-    public function sendQuery($query, $class = 'stdClass'){
+    public function queryAll($query, $class = 'stdClass'){
         $connect = $this->connect;
         if(strtoupper(explode(' ', $query)[0]) == 'SELECT'){
             $resQuery = mysqli_query($connect, $query);
@@ -42,5 +41,9 @@ class Sql
         }else{
             return mysqli_query($connect, $query);
         }
+    }
+
+    public function queryOne($sql, $class = 'stdClass'){
+        return $this->queryAll($sql, $class)[0];
     }
 }

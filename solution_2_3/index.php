@@ -5,12 +5,22 @@
  * Date: 04.06.2017
  * Time: 22:52
  */
-require_once __DIR__.'/classes/sql.php';
-require_once __DIR__.'/models/news.php';
+
+require_once __DIR__ . '/autoload.php';
 
 
-$items = News::getAll();
 
-include __DIR__ . '/views/index.php';
+$ctrl = isset($_GET['ctrl']) ? $_GET['ctrl'] : 'News';
+$act = isset($_GET['act']) ? $_GET['act'] : 'ShowAll';
+
+$controllerClassName = $ctrl . 'Controller';
+
+require_once __DIR__ . '/controllers/' . $controllerClassName .'.php';
+
+$method = 'action' . $act;
+
+$controller = new $controllerClassName;
+
+$controller->$method();
 
 
