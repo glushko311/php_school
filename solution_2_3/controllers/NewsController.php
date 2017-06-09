@@ -11,7 +11,12 @@ class NewsController
     public function actionShowAll(){
 
         $items = News::getAll();
-        include __DIR__ . '/../views/news/all.php';
+
+        $view = new View();
+
+        $view->setData($items);
+        $view->display('/../views/news/','all.php');
+
     }
     public function actionShowOne(){
 
@@ -21,7 +26,11 @@ class NewsController
            $id = (int)$id;
 
            $item = News::getOne($id);
-           include __DIR__ . '/../views/news/OneView.php';
+
+           $view = new View();
+           $view->setData($item);
+           $view->display('/../views/news/','one.php');
+
        }
     }
 }

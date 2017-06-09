@@ -9,7 +9,10 @@
 class AdminNewsController
 {
     public static function actionShowForm(){
-        include_once __DIR__ . '/../views/news/add_form.php';
+
+        $view = new View();
+        $view->setData('');
+        $view->display('/../views/news/','add_form.php');
     }
     public static function actionAddNews(){
        if(!empty($_POST['title']) && !empty($_POST['text'])){
@@ -20,10 +23,18 @@ class AdminNewsController
            $sql = new Sql();
            $query = 'INSERT INTO t_news (title, text) VALUES ( \''.$title.'\', \''.$text.'\')';
            $sql->queryAll($query);
-           echo $query;
+           $message = 'Новость была успешно загружена';
+
+           $view = new View();
+           $view->setData($message);
+           $view->display('/../views/news/','message.php');
+
        }else{
            $error = "Неверно введенные либо пустые данные";
-           echo $error;
+
+           $view = new View();
+           $view->setData($error);
+           $view->display('/../views/news/','message.php');
        }
     }
 }
