@@ -10,10 +10,10 @@ class NewsController
 {
     public function actionShowAll(){
 
-        $items = News::getAll();
+        $news = News::getAll();
 
         $view = new View();
-        $view->setData('items', $items);
+        $view->items = $news;
         $view->display('news','all.php');
 
     }
@@ -22,10 +22,10 @@ class NewsController
        if(isset($_GET['id'])){
            $id = $_GET['id'];
            $id = (int)$id;
-           $items[] =  News::getOne($id);
+           $news[] =  News::getOne($id);
 
            $view = new View();
-           $view->setData('items', $items);
+           $view->items = $news;
            $view->display('news','one.php');
 
        }

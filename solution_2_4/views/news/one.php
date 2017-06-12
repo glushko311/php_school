@@ -8,6 +8,10 @@
 ?>
 
 <div class="news">
-    <h2><?php echo $items[0]->title; ?></h2>
-    <p><?php echo $items[0]->text; ?></p>
+    <?php if(!empty($items[0])) :?>
+        <h2><?php echo $items[0]->title; ?></h2>
+        <p><?php echo $items[0]->text; ?>
+    <?php else :?>
+        <h2>Новость не найдена</h2>
+    <?php endif?>
 </div>
