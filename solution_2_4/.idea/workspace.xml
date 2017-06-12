@@ -76,8 +76,8 @@
       <file leaf-file-name="Sql.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classes/Sql.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4935065">
-              <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.33766234">
+              <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
               <folding>
                 <element signature="e#7#86#0#PHP" expanded="true" />
               </folding>
@@ -674,8 +674,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/Sql.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4935065">
-          <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.33766234">
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
           <folding>
             <element signature="e#7#86#0#PHP" expanded="true" />
           </folding>

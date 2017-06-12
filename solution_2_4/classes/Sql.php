@@ -27,7 +27,6 @@ class Sql
         if(strtoupper(explode(' ', $query)[0]) == 'SELECT'){
             $resQuery = mysqli_query($connect, $query);
             $res = [];
-            var_dump($resQuery);
             if(!empty($resQuery)){
 
                 while( $row = mysqli_fetch_object($resQuery, $class)){
