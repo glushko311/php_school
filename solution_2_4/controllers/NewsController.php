@@ -24,6 +24,8 @@ class NewsController
            $id = (int)$id;
            $news[] =  News::getOne($id);
 
+
+
            $view = new View();
            $view->items = $news;
            $view->display('news','one.php');

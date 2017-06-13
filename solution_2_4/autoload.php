@@ -1,16 +1,18 @@
 <?php
 
 function __autoload($class){
+    $dirArray = ['/controllers/',
+                 '/models/',
+                 '/classes/',
+                 '/views/'
+                ];
 
-    if(file_exists(__DIR__ . '/controllers/' . $class . '.php')){
-        require __DIR__ . '/controllers/' . $class . '.php';
+    foreach($dirArray as $dir) {
+        if (file_exists(__DIR__ . $dir . $class . '.php')) {
 
-    }elseif(file_exists(__DIR__ . '/models/' . $class . '.php')){
-        require __DIR__ . '/models/' . $class . '.php';
+            require __DIR__ . $dir . $class . '.php';
+            break;
 
-    }elseif(file_exists(__DIR__ . '/classes/' . $class .'.php')){
-        require __DIR__ . '/classes/' . $class . '.php';
-    }elseif(file_exists(__DIR__ . '/views/' . $class .'.php')){
-        require __DIR__ . '/views/' . $class . '.php';
+        }
     }
 }

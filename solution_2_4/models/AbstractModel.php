@@ -15,4 +15,11 @@ abstract class AbstractModel
         $db = new Sql();
         return $db->queryAll('SELECT * FROM '.static::$table, static::$className);
     }
+
+    public static function getOne($id){
+        $db = new Sql();
+        $query = 'SELECT * FROM t_news WHERE t_news.id=' . $id;
+        return $db->queryOne($query, 'News');
+    }
+
 }
