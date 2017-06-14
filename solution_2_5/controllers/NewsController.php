@@ -11,7 +11,7 @@ class NewsController
     public function actionShowAll(){
 
         $db = new DB();
-        $res = $db->query('SELECT * FROM t_news WHERE id=:id',[':id'=>1]);
+        $res = NewsModel::findAll();
         var_dump($res);
         die;
 //        $news = News::getAll();

@@ -13,7 +13,9 @@ class DB
     const  LOGIN = 'root';
     const  PASSWORD = '';
     const  DB_NAME = 'news';
+
     private $dbh;
+    private $className = 'stdClass';
 
 
     function __construct()
@@ -22,10 +24,13 @@ class DB
         $this->dbh = new PDO('mysql:dbname='.self::DB_NAME.';host='.self::HOST.';charset=utf8', self::LOGIN, self::PASSWORD);
     }
 
+    public function setClassName($className){
+        $this->className = $className;
+    }
     public function query($sql, $params=[]){
         $sth = $this->dbh->prepare($sql);
         $res = $sth->execute($params);
-        return $sth->fetchAll(PDO::FETCH_OBJ);
+        return $sth->fetchAll(PDO::FETCH_CLASS, $this->className);
     }
 
 }
