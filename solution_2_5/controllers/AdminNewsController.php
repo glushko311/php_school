@@ -11,7 +11,7 @@ class AdminNewsController
     public static function actionShowForm(){
 
         $view = new View();
-        $view->setData('');
+        //$view->setData('');
         $view->display('/../views/news/','add_form.php');
     }
     public static function actionAddNews(){
@@ -20,20 +20,23 @@ class AdminNewsController
            $title = htmlspecialchars( $_POST['title']);
            $text = htmlspecialchars($_POST['text']);
 
-           $sql = new DB();
-           $query = 'INSERT INTO t_news (title, text) VALUES ( \''.$title.'\', \''.$text.'\')';
-           $sql->queryAll($query);
+           $article = new NewsModel();
+           $article->title = $title;
+           $article->text = $text;
+
+           $article->save();
+
            $message = 'Новость была успешно загружена';
 
            $view = new View();
-           $view->setData($message);
+           $view->message = $message;
            $view->display('news','message.php');
 
        }else{
            $error = "Неверно введенные либо пустые данные";
 
            $view = new View();
-           $view->setData($error);
+           $view->message = $error;
            $view->display('news','message.php');
        }
     }

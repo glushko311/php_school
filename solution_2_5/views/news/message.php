@@ -1,3 +1,3 @@
 <h1>
-    <?php echo $items; ?>
+    <?php echo $message; ?>
 </h1>

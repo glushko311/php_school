@@ -39,7 +39,39 @@ class NewsController
         $article->title = 'Привет Джа!';
         $article->text = 'Джа мы в тебя верим!';
 
-        $article->insert();
+        $article->save();
+    }
+    public function actionFindByColumn(){
+        $column = $_GET['col'];
+        $val = $_GET['val'];
+
+        $news = NewsModel::findByColumn($column, $val);
+        var_dump($news);
+    }
+    public function actionUpdateRecord(){
+        $article = new NewsModel();
+        $article->id = 7;
+        $article->title = 'Привет Бендер';
+        $article->text = 'Привет начинка для гроба.';
+
+        $article->save();
+    }
+    public function actionSaveRecord(){
+        $article = new NewsModel();
+
+        $article->id = 56;
+        $article->title = 'Привет Дед Мороз';
+        $article->text = 'Я подарю тебе покой.Вечный покой.';
+
+        $article->save();
+    }
+    public function actionDeleteRecord(){
+        $article = new NewsModel();
+        $article->id = 56;
+        $article->title = 'Привет Бендер';
+        $article->text = 'Привет начинка для гроба.';
+
+        $article->delete();
     }
 
 }
