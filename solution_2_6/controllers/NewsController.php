@@ -46,7 +46,7 @@ class NewsController
         $val = $_GET['val'];
 
         $news = NewsModel::findByColumn($column, $val);
-        var_dump($news);
+
     }
     public function actionUpdateRecord(){
         $article = new NewsModel();

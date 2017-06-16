@@ -35,8 +35,13 @@ abstract class AbstractModel
         $sql = 'SELECT * FROM ' . static::$table . ' WHERE id=:id';
         $db = new DB();
         $db->setClassName($class);
-
-        return $db->query($sql, [':id'=>$id])[0];
+        $result = $db->query($sql, [':id'=>$id]);
+        if(empty($result)){
+            $e = new Exception404();
+            $e->classError = get_called_class();
+            throw $e;
+        }
+        return $result[0];
     }
 
     public static function findByColumn($column, $value){

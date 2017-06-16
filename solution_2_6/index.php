@@ -13,14 +13,25 @@ require_once __DIR__ . '/autoload.php';
 $ctrl = isset($_GET['ctrl']) ? $_GET['ctrl'] : 'News';
 $act = isset($_GET['act']) ? $_GET['act'] : 'ShowAll';
 
-$controllerClassName = $ctrl . 'Controller';
+try{
+    $controllerClassName = $ctrl . 'Controller';
 
-require_once __DIR__ . '/controllers/' . $controllerClassName .'.php';
+    require_once __DIR__ . '/controllers/' . $controllerClassName .'.php';
 
-$method = 'action' . $act;
+    $method = 'action' . $act;
 
-$controller = new $controllerClassName;
+    $controller = new $controllerClassName;
 
-$controller->$method();
+    $controller->$method();
+
+}catch(Exception $e){
+    $view = new View();
+
+    $view->code = $e->getCode();
+    $view->className = $e->classError;
+
+    $view->display('news','error.php');
+}
+
 
 
