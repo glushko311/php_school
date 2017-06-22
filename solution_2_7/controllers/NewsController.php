@@ -47,6 +47,10 @@ class NewsController
 
         $news = NewsModel::findByColumn($column, $val);
 
+        $view = new View();
+        $view->items = $news;
+        $view->display('news','all.php');
+
     }
     public function actionUpdateRecord(){
         $article = new NewsModel();
